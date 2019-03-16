@@ -178,6 +178,14 @@
         </pluginManagement>
     </build>
 
+    <distributionManagement>
+        <repository>
+            <id>bintray-patrickfav</id>
+            <name>patrickfav-bytes-java</name>
+            <url>https://api.bintray.com/maven/patrickfav/maven/mvn-common-parent/;publish=1</url>
+        </repository>
+    </distributionManagement>
+
     <developers>
         <developer>
             <id>patrickfav</id>
