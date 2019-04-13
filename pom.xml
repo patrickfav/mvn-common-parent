@@ -5,13 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>at.favre.lib</groupId>
-    <artifactId>common</artifactId>
+    <artifactId>common-parent</artifactId>
     <version>1</version>
     <packaging>pom</packaging>
 
     <name>Maven Common Configuration</name>
-    <description>Common configurations (plugins, version, etc.) used as parent for maven projects</description>
+    <description>Common configurations (plugins, version, etc.) used as parent for maven projects.</description>
     <url>https://github.com/patrickfav/mvn-common-parent</url>
+    <inceptionYear>2019</inceptionYear>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -167,7 +168,7 @@
                             <configuration>
                                 <rules>
                                     <requireMavenVersion>
-                                        <version>3.6</version>
+                                        <version>[3.3.9,)</version>
                                     </requireMavenVersion>
                                 </rules>
                             </configuration>
@@ -181,7 +182,7 @@
     <distributionManagement>
         <repository>
             <id>bintray-patrickfav</id>
-            <name>patrickfav-bytes-java</name>
+            <name>patrickfav-mvn-common-parent</name>
             <url>https://api.bintray.com/maven/patrickfav/maven/mvn-common-parent/;publish=1</url>
         </repository>
     </distributionManagement>
