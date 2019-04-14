@@ -1,5 +1,18 @@
 # Releases
 
+## 3
+
+### Plugins
+
+* versions: 2.7 **(enabled)**
+* javadoc: 3.0.1
+* owasp-dependency-check: 5.0.0-M1
+* checkstyle: 8.19
+
+### Dependencies
+
+* Junit: 4.12
+
 ## 2
 
 ### Plugins
@@ -12,7 +25,8 @@ Initial release
 
 ### Plugins
 
-* checkstyle: 8.18
+* checkstyle-plugin: 3.0.0
+    * checkstyle: 8.18
 * compiler plugin: 3.0.0
   * errorprone plugin: 2.8.2
   * errorprone plugin: 2.0.5 (Java 7 compatible)
@@ -20,4 +34,6 @@ Initial release
 * coveralls: 4.3.0
 * jarsigner: 3.0.0
 * checksum: 1.8
-* enforcer: 3.0.0-M2
+* enforcer: 3.0.0-M2 **(enabled)**
+
+
