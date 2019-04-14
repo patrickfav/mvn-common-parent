@@ -6,7 +6,7 @@
 
     <groupId>at.favre.lib</groupId>
     <artifactId>common-parent</artifactId>
-    <version>3</version>
+    <version>4</version>
     <packaging>pom</packaging>
 
     <name>Maven Common Configuration</name>
@@ -38,6 +38,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
             </plugin>
         </plugins>
 
@@ -94,18 +98,30 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
                     <version>3.0.0</version>
-                    <configuration>
-                        <configLocation>checkstyle.xml</configLocation>
-                        <suppressionsLocation>checkstyle-suppressions.xml</suppressionsLocation>
-                        <suppressionsFileExpression>checkstyle.suppressions.file</suppressionsFileExpression>
-                    </configuration>
+                    <!-- automatically run on check phase -->
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                     <dependencies>
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
                             <version>8.19</version>
                         </dependency>
+                        <!-- load checkstyle config from this dependency, see https://stackoverflow.com/a/19690484/774398 -->
+                        <dependency>
+                            <groupId>at.favre.lib</groupId>
+                            <artifactId>checkstyle-config</artifactId>
+                            <version>1</version>
+                        </dependency>
                     </dependencies>
+                    <configuration>
+                        <configLocation>checkstyle.xml</configLocation>
+                    </configuration>
                 </plugin>
 
                 <!-- error prone for Java 7 support -->

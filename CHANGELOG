@@ -1,5 +1,12 @@
 # Releases
 
+## 4
+
+### Plugins
+
+* add checkstyle to check phase (runs on install now)
+* enable checkstyle plugin per default
+
 ## 3
 
 ### Plugins
