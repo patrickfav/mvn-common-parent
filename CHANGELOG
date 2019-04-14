@@ -1,5 +1,9 @@
 # Releases
 
+## 2
+
+* add required scm info (consumer should overwrite)
+
 ## 1
 
 Initial release
