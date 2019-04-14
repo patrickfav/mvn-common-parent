@@ -2,8 +2,22 @@
 
 ## 2
 
+### Plugins
+
 * add required scm info (consumer should overwrite)
 
 ## 1
 
 Initial release
+
+### Plugins
+
+* checkstyle: 8.18
+* compiler plugin: 3.0.0
+  * errorprone plugin: 2.8.2
+  * errorprone plugin: 2.0.5 (Java 7 compatible)
+* jacoco: 0.8.3
+* coveralls: 4.3.0
+* jarsigner: 3.0.0
+* checksum: 1.8
+* enforcer: 3.0.0-M2
