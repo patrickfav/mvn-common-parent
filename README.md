@@ -76,6 +76,10 @@ Set version through command line (or ci script)
 mvnw versions:set -DnewVersion=1.2.3-SNAPSHOT
 ```
 
+## Related Projects
+
+* [checkstyle-config](https://github.com/patrickfav/checkstyle-config)
+
 # License
 
 Copyright 2019 Patrick Favre-Bulle
