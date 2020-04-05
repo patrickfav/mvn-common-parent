@@ -68,6 +68,8 @@ Check for possible dependency updates
 
 ```bash
 mvnw versions:display-dependency-updates
+mvnw versions:display-plugin-updates
+mvnw versions:display-property-updates
 ```
 
 Set version through command line (or ci script)

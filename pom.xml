@@ -17,7 +17,22 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <checkstyle_plugin.version>3.1.1</checkstyle_plugin.version>
+
+        <commonConfig.checkstylePlugin.version>3.1.1</commonConfig.checkstylePlugin.version>
+        <commonConfig.checkstyle.version>8.31</commonConfig.checkstyle.version>
+        <commonConfig.checkstyle.config.version>2</commonConfig.checkstyle.config.version>
+
+        <commonConfig.jarSign.keystore>${project.basedir}/keystore.jks</commonConfig.jarSign.keystore>
+        <commonConfig.jarSign.alias>pfopensource</commonConfig.jarSign.alias>
+        <commonConfig.jarSign.storepass>${env.OPENSOURCE_PROJECTS_KS_PW}</commonConfig.jarSign.storepass>
+        <commonConfig.jarSign.keypass>${env.OPENSOURCE_PROJECTS_KEY_PW}</commonConfig.jarSign.keypass>
+
+        <commonConfig.enforcer.reqMavenVersion>[3.3.9,)</commonConfig.enforcer.reqMavenVersion>
+
+        <commonConfig.errorprone.source>1.7</commonConfig.errorprone.source>
+        <commonConfig.errorprone.target>1.7</commonConfig.errorprone.target>
+        <commonConfig.errorprone.plugin.version>2.8.2</commonConfig.errorprone.plugin.version>
+        <commonConfig.errorprone.core.version>2.0.5</commonConfig.errorprone.core.version>
     </properties>
 
     <!-- see repositories in Super POM: https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Super_POM -->
@@ -107,11 +122,32 @@
 
         <pluginManagement>
             <plugins>
-                <!-- versions plugin: check for updates with mvn versions:display-dependency-updates -->
+                <!-- check for updates with 'mvnw versions:display-dependency-updates' or 'mvnw versions:display-plugin-updates' -->
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>versions-maven-plugin</artifactId>
                     <version>2.7</version>
+                </plugin>
+
+                <!-- clean -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+
+                <!-- deploy -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>3.0.0-M1</version>
+                </plugin>
+
+                <!-- install -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>3.0.0-M1</version>
                 </plugin>
 
                 <!-- javadoc -->
@@ -157,7 +193,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>${checkstyle_plugin.version}</version>
+                    <version>${commonConfig.checkstylePlugin.version}</version>
                     <!-- automatically run on check phase -->
                     <executions>
                         <execution>
@@ -170,13 +206,13 @@
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>8.31</version>
+                            <version>${commonConfig.checkstyle.version}</version>
                         </dependency>
                         <!-- load checkstyle config from this dependency, see https://stackoverflow.com/a/19690484/774398 -->
                         <dependency>
                             <groupId>at.favre.lib</groupId>
                             <artifactId>checkstyle-config</artifactId>
-                            <version>2</version>
+                            <version>${commonConfig.checkstyle.config.version}</version>
                         </dependency>
                     </dependencies>
                     <configuration>
@@ -188,18 +224,18 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.0</version>
+                    <version>3.8.1</version>
                     <configuration>
                         <compilerId>javac-with-errorprone</compilerId>
                         <forceJavacCompilerUse>true</forceJavacCompilerUse>
-                        <source>1.7</source>
-                        <target>1.7</target>
+                        <source>${commonConfig.errorprone.source}</source>
+                        <target>${commonConfig.errorprone.target}</target>
                     </configuration>
                     <dependencies>
                         <dependency>
                             <groupId>org.codehaus.plexus</groupId>
                             <artifactId>plexus-compiler-javac-errorprone</artifactId>
-                            <version>2.8.2</version>
+                            <version>${commonConfig.errorprone.plugin.version}</version>
                         </dependency>
                         <!-- override plexus-compiler-javac-errorprone's dependency on
                              Error Prone with the latest version -->
@@ -207,7 +243,7 @@
                             <groupId>com.google.errorprone</groupId>
                             <artifactId>error_prone_core</artifactId>
                             <!-- only one compatible with java 7-->
-                            <version>2.0.5</version>
+                            <version>${commonConfig.errorprone.core.version}</version>
                         </dependency>
                     </dependencies>
                 </plugin>
@@ -264,10 +300,10 @@
                     </executions>
                     <configuration>
                         <skip>false</skip> <!-- set this to true if fail because of missing credentials -->
-                        <keystore>keystore.jks</keystore>
-                        <alias>pfopensource</alias>
-                        <storepass>${env.OPENSOURCE_PROJECTS_KS_PW}</storepass>
-                        <keypass>${env.OPENSOURCE_PROJECTS_KEY_PW}</keypass>
+                        <keystore>${commonConfig.jarSign.keystore}</keystore>
+                        <alias>${commonConfig.jarSign.alias}</alias>
+                        <storepass>${commonConfig.jarSign.storepass}</storepass>
+                        <keypass>${commonConfig.jarSign.keypass}</keypass>
                     </configuration>
                 </plugin>
 
@@ -308,7 +344,7 @@
                             <configuration>
                                 <rules>
                                     <requireMavenVersion>
-                                        <version>[3.3.9,)</version>
+                                        <version>${commonConfig.enforcer.reqMavenVersion}</version>
                                     </requireMavenVersion>
                                 </rules>
                             </configuration>
@@ -324,7 +360,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${checkstyle_plugin.version}</version>
+                <version>${commonConfig.checkstylePlugin.version}</version>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -343,6 +379,11 @@
                 <artifactId>junit</artifactId>
                 <version>4.13</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>at.favre.lib</groupId>
+                <artifactId>bytes</artifactId>
+                <version>1.3.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
