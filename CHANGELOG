@@ -1,5 +1,23 @@
 # Releases
 
+## 5
+
+* add checkstyle to reporting
+
+### Plugins
+
+* checkstyle-plugin: 3.1.1
+* maven-jar-plugin: 3.2.0
+* checkstyle-config: 2
+* plexus-compiler-javac-errorprone: 2.8.6
+* jacoco-maven-plugin: 0.8.5
+* maven-enforcer-plugin: 3.0.0-M3
+
+### Dependencies
+
+* checkstyle: 8.31
+* junit: 4.13
+
 ## 4
 
 ### Plugins
