@@ -1,11 +1,10 @@
 # To let the CI execute the maven wrapper, use this command and push the change:
 #    git update-index --chmod=+x mvnw
 
-sudo: false # route your build to the container-based infrastructure for a faster build
 language: java
 install: true
 jdk:
-  - oraclejdk8
+  - oraclejdk11
 
 before_install:
   - openssl aes-256-cbc -K $encrypted_b093246767c9_key -iv $encrypted_b093246767c9_iv -in ci-settings.xml.enc -out ci-settings.xml -d
@@ -21,14 +20,14 @@ deploy:
       branch: master
       tags: true
   - provider: releases
-    api_key:
+    token:
       secure: "nJuoMS1dtqw9s6jY7dgUmhucXsDaXtu3bL7e97pdXh3bunAIzdL91sDLMnXLxeVUARDc9j7KslHubISjt7E6L9C6no5W6O+N62Y6DhHTvYeTgZ6dZcT6wsdOs6l6XLwgI6VRklyRwuyxAWECOCCm+EE7Yo1bzOmIOhTbJ9hVWxsUbHgugzE5ZMiEHGnpsUN0WjlbxPZiHXBRITNlzX/ypcrHkfMJhXo4j5Go8SWE/U7aUspQKNR0A33s+4EZwve8ONGYjbJLGNEA4Jf8/huuzrBN1XTr4clQt3g8bfJ2xXph3eneNZN/nxEUBImc6MqTCnDaDb1zZAQVCA0GMUzuxrb6eaC884UpeQVbXlcZZHtN0PY/fpoGGmT9zHv4RzlmoTcht965n5vRLDzugF7T/lU2fi4jyAwK+LNqDkYfB1N4p9a7cQLwnufnWwt2n8vZdqiLFwuFrsNhafMkA8Xtr4dtr012atLCIRi1Nk7PSdUADNDzLN78Vbcp7kPfD1sJGCDbPX5p66WEJXHKTQW2Fvjz6Yg2pReAYhRDLwdKBrk2I7TP3ZQbgczcGDMdyCtSLq2wq9ggNVYr/7N92cneBrg9WZUp8Xd4iTIQO0bRK1MhArhsWzVh8B7TEelUve1YCjuUgnxWSORb9b9WhZXRTNMOJg0gl2wqBE9LtzByAKw="
     file_glob: true
     file:
       - "target/*.jar"
       - "target/*.sha256"
       - "target/checksum-sha256.txt"
-    skip_cleanup: true
+    cleanup: true
     on:
       branch: master
       tags: true
