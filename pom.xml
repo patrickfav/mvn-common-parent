@@ -20,15 +20,28 @@
         <checkstyle_plugin.version>3.1.1</checkstyle_plugin.version>
     </properties>
 
+    <!-- see repositories in Super POM: https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Super_POM -->
     <repositories>
         <repository>
-            <id>maven-central-repo</id>
+            <id>jcenter</id>
+            <name>jcenter</name>
             <url>https://jcenter.bintray.com</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
         </repository>
     </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jcenter</id>
+            <name>jcenter</name>
+            <url>https://jcenter.bintray.com</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
     <build>
         <plugins>
