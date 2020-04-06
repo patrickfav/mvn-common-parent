@@ -1,5 +1,11 @@
 # Releases
 
+## 7
+
+### Dependencies
+
+* (new) jackson-core: 2.10.3
+
 ## 6
 
 * update maven wrapper

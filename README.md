@@ -17,9 +17,10 @@ Use as parent pom:
     <parent>
         <groupId>at.favre.lib</groupId>
         <artifactId>common-parent</artifactId>
-        <version>{current-version}</version>
+        <version>[current-version]</version>
     </parent>
     ...
+</project>
 ```
 
 Don't forget to overwrite `<scm>...</scm>` config, otherwise it will be inherited from this project.
@@ -52,7 +53,7 @@ then you can use `mvnw` instead of `mvn`. The advantage is that everybody (+ci) 
 
 Here is a high level feature set of this project:
 
-* Java 1.7 target
+* Java 7 target (but customizable)
 * [Checkstyle](http://checkstyle.sourceforge.net/)
 * [Google Errorprone](https://github.com/google/error-prone) (Java 7)
 * [Maven enforcer](https://maven.apache.org/enforcer/maven-enforcer-plugin/) (for Maven version)
@@ -61,6 +62,8 @@ Here is a high level feature set of this project:
 * [Jacoco](https://www.eclemma.org/jacoco/) + [Coveralls](https://coveralls.io/)
 * [Jarsigner](https://maven.apache.org/plugins/maven-jarsigner-plugin/)
 * [Checksum](https://checksum-maven-plugin.nicoulaj.net/)
+* Default versions for plugins in the [Super POM](http://maven.apache.org/ref/3.0.4/maven-model-builder/super-pom.html)
+* Default versions for [junit](https://junit.org/junit4/), jackson, [bytes](https://github.com/patrickfav/bytes-java) and more
 
 ### Versions Plugin
 
@@ -78,9 +81,42 @@ Set version through command line (or ci script)
 mvnw versions:set -DnewVersion=1.2.3-SNAPSHOT
 ```
 
+### Configuration & Overrides
+
+There are many ways to easily customize the parent configuration without the need to change the POM itself. Have a look at the `commonConfig.*` properties in the POM and override them as you please in your `<properties />`.
+
+Important config:
+
+```xml
+<!-- set this to true if fail because of missing credentials -->
+<commonConfig.jarSign.skip>false</commonConfig.jarSign.skip>
+```
+
+Additionally you can use maven itself to override certain settings. For instance if you want to deactivate checkstyle, just add
+
+```xml
+<plugins>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <configuration>
+            <skip>true</skip>
+        </configuration>
+    </plugin>
+</plugins>    
+```
+
+### Reference to Project Root
+
+If you need to use e.g. a file that lives within your project (e.g. the keystore file for jar-siging) make sure you
+use the correct base path. There are two useful variables to help you:
+
+* `${project.basedir}` is the path of your current module
+* `${session.executionRootDirectory}` is the root path of your projects (and all your modules) - can be used in sub-modules
+
 ## Related Projects
 
-* [checkstyle-config](https://github.com/patrickfav/checkstyle-config)
+* externalized [checkstyle-config](https://github.com/patrickfav/checkstyle-config)
 
 # License
 
