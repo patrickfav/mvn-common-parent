@@ -1,5 +1,9 @@
 # Releases
 
+## 8
+
+* add new property to make it easier to disable errorprone
+
 ## 7
 
 ### Dependencies

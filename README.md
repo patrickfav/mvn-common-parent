@@ -105,6 +105,22 @@ Additionally you can use maven itself to override certain settings. For instance
     </plugin>
 </plugins>    
 ```
+#### Disable Errorprone
+
+To disable the errorprone static anaylzer set this property:
+
+```xml
+<commonConfig.compile.compilerId>javac</commonConfig.compile.compilerId>
+```
+
+#### Use JDK8 or JDK11
+
+Set these properties to change the source and target jdk version. You may want to disable erroprone.
+
+```xml
+<commonConfig.compile.source>11</commonConfig.compile.source>
+<commonConfig.compile.target>11</commonConfig.compile.target>
+```
 
 ### Reference to Project Root
 
