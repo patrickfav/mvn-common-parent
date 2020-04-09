@@ -2,6 +2,8 @@
 
 ## 10
 
+* add JDK profile feature
+
 ## 8/9
 
 * add new property to make it easier to disable errorprone

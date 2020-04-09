@@ -36,7 +36,7 @@ mvnw help:effective-pom
 You may check for updates of any plugins or dependencies with
 
 ```bash
-mvn versions:display-dependency-updates
+mvnw versions:display-dependency-updates
 ```
 
 ## Project Setup
@@ -44,10 +44,31 @@ mvn versions:display-dependency-updates
 It is recommended to use [maven wrapper](https://github.com/takari/maven-wrapper) in a new project. Initialize with:
 
 ```bash
-mvn -N io.takari:maven:0.7.5:wrapper
+mvn -N io.takari:maven:0.7.7:wrapper
 ```
 
 then you can use `mvnw` instead of `mvn`. The advantage is that everybody (+ci) uses a pre-defined maven version. Even [IntelliJ has Maven wrapper support](https://plugins.jetbrains.com/plugin/10633-maven-wrapper-support).
+
+### JDK Config
+
+To set the JDK you want to use, this config uses profiles. The easiest way to activate one of the is to generate the file `.mvn/maven.config` and add e.g.:
+
+```properties
+-DcommonConfig.compiler.profile=jdk8_w_errorprone
+```
+
+Currently possible values:
+
+* `jdk7_w_errorprone`
+* `jdk8_w_errorprone`
+* `jdk11`
+
+You can check if the correct profile is set with
+
+```bash
+mvnw help:active-profiles
+mvnw help:all-profiles
+```
 
 ## Features
 
