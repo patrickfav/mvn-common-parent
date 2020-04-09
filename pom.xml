@@ -195,6 +195,12 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.2.0</version>
                 <inherited>false</inherited>
+                <configuration>
+                    <classesDirectory>misc</classesDirectory>
+                    <excludes>
+                        <exclude>**</exclude>
+                    </excludes>
+                </configuration>
                 <executions>
                     <execution>
                         <id>default-jar</id>
