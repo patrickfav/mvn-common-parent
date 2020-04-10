@@ -1,5 +1,10 @@
 # Releases
 
+## 11
+
+* add more compiler profiles
+* fix jdk 8 errorprone profile
+
 ## 10
 
 * add JDK profile feature

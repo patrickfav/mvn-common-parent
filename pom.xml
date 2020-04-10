@@ -38,112 +38,6 @@
         </commonConfig.deps.jackson-jaxrs.version>
     </properties>
 
-    <profiles>
-        <profile>
-            <id>JDK_7_ERRORPRONE</id>
-            <activation>
-                <property>
-                    <name>commonConfig.compiler.profile</name>
-                    <value>jdk7_w_errorprone</value>
-                </property>
-            </activation>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <!-- error prone support -->
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-compiler-plugin</artifactId>
-                            <version>${commonConfig.compile.plugin.version}</version>
-                            <configuration>
-                                <compilerId>javac-with-errorprone</compilerId>
-                                <forceJavacCompilerUse>true</forceJavacCompilerUse>
-                                <source>1.7</source>
-                                <target>1.7</target>
-                            </configuration>
-                            <dependencies>
-                                <dependency>
-                                    <groupId>org.codehaus.plexus</groupId>
-                                    <artifactId>plexus-compiler-javac-errorprone</artifactId>
-                                    <version>2.8.2</version>
-                                </dependency>
-                                <!-- override plexus-compiler-javac-errorprone's dependency on
-                                     Error Prone with the latest version -->
-                                <dependency>
-                                    <groupId>com.google.errorprone</groupId>
-                                    <artifactId>error_prone_core</artifactId>
-                                    <!-- only one compatible with java 7-->
-                                    <version>2.0.5</version>
-                                </dependency>
-                            </dependencies>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-            </build>
-        </profile>
-        <profile>
-            <id>JDK_8_ERRORPRONE</id>
-            <activation>
-                <property>
-                    <name>commonConfig.compiler.profile</name>
-                    <value>jdk8_w_errorprone</value>
-                </property>
-            </activation>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <!-- error prone support -->
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-compiler-plugin</artifactId>
-                            <version>${commonConfig.compile.plugin.version}</version>
-                            <configuration>
-                                <source>8</source>
-                                <target>8</target>
-                                <compilerArgs>
-                                    <arg>-XDcompilePolicy=simple</arg>
-                                    <arg>-Xplugin:ErrorProne</arg>
-                                </compilerArgs>
-                                <annotationProcessorPaths>
-                                    <path>
-                                        <groupId>com.google.errorprone</groupId>
-                                        <artifactId>error_prone_core</artifactId>
-                                        <version>2.3.4</version>
-                                    </path>
-                                </annotationProcessorPaths>
-                            </configuration>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-            </build>
-        </profile>
-        <profile>
-            <id>JDK_11</id>
-            <activation>
-                <property>
-                    <name>commonConfig.compiler.profile</name>
-                    <value>jdk11</value>
-                </property>
-            </activation>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <!-- error prone support -->
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-compiler-plugin</artifactId>
-                            <version>${commonConfig.compile.plugin.version}</version>
-                            <configuration>
-                                <source>11</source>
-                                <target>11</target>
-                            </configuration>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-            </build>
-        </profile>
-    </profiles>
-
     <!-- see repositories in Super POM: https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Super_POM -->
     <repositories>
         <repository>
@@ -504,6 +398,199 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <!-- COMPILER PROFILES
+     Use this either with your cmd line or in .mvn/maven.config. Example "-DcommonConfig.compiler.profile=jdk11".
+     This sets the JDK and additionally configurations, eg. for errorprone for the compiler. -->
+    <profiles>
+        <profile>
+            <id>JDK_7_ERRORPRONE</id>
+            <activation>
+                <property>
+                    <name>commonConfig.compiler.profile</name>
+                    <value>jdk7_w_errorprone</value>
+                </property>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <!-- error prone support -->
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                            <version>${commonConfig.compile.plugin.version}</version>
+                            <configuration>
+                                <compilerId>javac-with-errorprone</compilerId>
+                                <forceJavacCompilerUse>true</forceJavacCompilerUse>
+                                <source>1.7</source>
+                                <target>1.7</target>
+                            </configuration>
+                            <dependencies>
+                                <dependency>
+                                    <groupId>org.codehaus.plexus</groupId>
+                                    <artifactId>plexus-compiler-javac-errorprone</artifactId>
+                                    <version>2.8.2</version>
+                                </dependency>
+                                <!-- override plexus-compiler-javac-errorprone's dependency on
+                                     Error Prone with the latest version -->
+                                <dependency>
+                                    <groupId>com.google.errorprone</groupId>
+                                    <artifactId>error_prone_core</artifactId>
+                                    <!-- only one compatible with java 7-->
+                                    <version>2.0.5</version>
+                                </dependency>
+                            </dependencies>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+        <profile>
+            <id>JDK_8</id>
+            <activation>
+                <property>
+                    <name>commonConfig.compiler.profile</name>
+                    <value>jdk8</value>
+                </property>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <!-- error prone support -->
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                            <configuration>
+                                <source>8</source>
+                                <target>8</target>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+        <profile>
+            <id>JDK_8_ERRORPRONE</id>
+            <activation>
+                <property>
+                    <name>commonConfig.compiler.profile</name>
+                    <value>jdk8_w_errorprone</value>
+                </property>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <!-- error prone support -->
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                            <configuration>
+                                <compilerId>javac-with-errorprone</compilerId>
+                                <forceJavacCompilerUse>true</forceJavacCompilerUse>
+                                <source>8</source>
+                                <target>8</target>
+                            </configuration>
+                            <dependencies>
+                                <dependency>
+                                    <groupId>org.codehaus.plexus</groupId>
+                                    <artifactId>plexus-compiler-javac-errorprone</artifactId>
+                                    <version>2.8.6</version>
+                                </dependency>
+                                <!-- override plexus-compiler-javac-errorprone's dependency on
+                                     Error Prone with the latest version -->
+                                <dependency>
+                                    <groupId>com.google.errorprone</groupId>
+                                    <artifactId>error_prone_core</artifactId>
+                                    <!-- only one compatible with java 7-->
+                                    <version>2.3.4</version>
+                                </dependency>
+                            </dependencies>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+        <profile>
+            <id>JDK_11</id>
+            <activation>
+                <property>
+                    <name>commonConfig.compiler.profile</name>
+                    <value>jdk11</value>
+                </property>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <!-- error prone support -->
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                            <configuration>
+                                <release>11</release>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+        <profile>
+            <id>JDK_11_ERRORPRONE</id>
+            <activation>
+                <property>
+                    <name>commonConfig.compiler.profile</name>
+                    <value>jdk11_w_errorprone</value>
+                </property>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <!-- error prone support -->
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                            <configuration>
+                                <release>11</release>
+                                <compilerArgs>
+                                    <arg>-XDcompilePolicy=simple</arg>
+                                    <arg>-Xplugin:ErrorProne</arg>
+                                </compilerArgs>
+                                <annotationProcessorPaths>
+                                    <path>
+                                        <groupId>com.google.errorprone</groupId>
+                                        <artifactId>error_prone_core</artifactId>
+                                        <version>2.3.4</version>
+                                    </path>
+                                </annotationProcessorPaths>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+        <profile>
+            <id>JDK_14</id>
+            <activation>
+                <property>
+                    <name>commonConfig.compiler.profile</name>
+                    <value>jdk14</value>
+                </property>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <!-- error prone support -->
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                            <configuration>
+                                <release>14</release>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+    </profiles>
 
     <distributionManagement>
         <repository>
