@@ -32,6 +32,7 @@
         <commonConfig.enforcer.reqMavenVersion>[3.3.9,)</commonConfig.enforcer.reqMavenVersion>
 
         <commonConfig.compile.plugin.version>3.8.1</commonConfig.compile.plugin.version>
+        <commonConfig.compile.errorprone.version>2.3.4</commonConfig.compile.errorprone.version>
 
         <commonConfig.deps.jackson-core.version>2.10.3</commonConfig.deps.jackson-core.version>
         <commonConfig.deps.jackson-jaxrs.version>${commonConfig.deps.jackson-core.version}
@@ -502,7 +503,7 @@
                                     <groupId>com.google.errorprone</groupId>
                                     <artifactId>error_prone_core</artifactId>
                                     <!-- only one compatible with java 7-->
-                                    <version>2.3.4</version>
+                                    <version>${commonConfig.compile.errorprone.version}</version>
                                 </dependency>
                             </dependencies>
                         </plugin>
@@ -558,7 +559,7 @@
                                     <path>
                                         <groupId>com.google.errorprone</groupId>
                                         <artifactId>error_prone_core</artifactId>
-                                        <version>2.3.4</version>
+                                        <version>${commonConfig.compile.errorprone.version}</version>
                                     </path>
                                 </annotationProcessorPaths>
                             </configuration>

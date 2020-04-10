@@ -1,5 +1,9 @@
 # Releases
 
+## 12
+
+* new property `commonConfig.compile.errorprone.version`
+
 ## 11
 
 * add more compiler profiles
