@@ -59,6 +59,7 @@ To set the JDK you want to use, this config uses profiles. The easiest way to ac
 
 Currently possible values:
 
+* `jdk7`
 * `jdk7_w_errorprone`
 * `jdk8`
 * `jdk8_w_errorprone`

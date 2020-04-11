@@ -24,7 +24,9 @@
 
         <commonConfig.jarSign.keystore>${project.basedir}/keystore.jks</commonConfig.jarSign.keystore>
         <commonConfig.jarSign.alias>pfopensource</commonConfig.jarSign.alias>
+        <!--suppress UnresolvedMavenProperty -->
         <commonConfig.jarSign.storepass>${env.OPENSOURCE_PROJECTS_KS_PW}</commonConfig.jarSign.storepass>
+        <!--suppress UnresolvedMavenProperty -->
         <commonConfig.jarSign.keypass>${env.OPENSOURCE_PROJECTS_KEY_PW}</commonConfig.jarSign.keypass>
         <!-- set this to true if fail because of missing credentials -->
         <commonConfig.jarSign.skip>false</commonConfig.jarSign.skip>
@@ -404,6 +406,30 @@
      Use this either with your cmd line or in .mvn/maven.config. Example "-DcommonConfig.compiler.profile=jdk11".
      This sets the JDK and additionally configurations, eg. for errorprone for the compiler. -->
     <profiles>
+        <profile>
+            <id>JDK_7</id>
+            <activation>
+                <property>
+                    <name>commonConfig.compiler.profile</name>
+                    <value>jdk7</value>
+                </property>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <!-- error prone support -->
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                            <configuration>
+                                <source>7</source>
+                                <target>7</target>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
         <profile>
             <id>JDK_7_ERRORPRONE</id>
             <activation>

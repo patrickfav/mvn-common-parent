@@ -3,6 +3,7 @@
 ## 12
 
 * new property `commonConfig.compile.errorprone.version`
+* add jdk7 compiler profile
 
 ## 11
 
