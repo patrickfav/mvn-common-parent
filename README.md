@@ -8,7 +8,7 @@ A maven configuration which is used as commons config parent for POM files for m
 
 Here is a high level feature set of this project:
 
-* Java 7 target (but customizable)
+* Flexible JDK compiler config with using profiles
 * [Checkstyle](http://checkstyle.sourceforge.net/)
 * [Google Errorprone](https://github.com/google/error-prone) (Java 7)
 * [Maven enforcer](https://maven.apache.org/enforcer/maven-enforcer-plugin/) (for Maven version)
