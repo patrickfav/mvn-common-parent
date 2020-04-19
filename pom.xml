@@ -39,6 +39,8 @@
         <commonConfig.deps.jackson-core.version>2.10.3</commonConfig.deps.jackson-core.version>
         <commonConfig.deps.jackson-jaxrs.version>${commonConfig.deps.jackson-core.version}
         </commonConfig.deps.jackson-jaxrs.version>
+
+        <commonConfig.proguard.version>6.2.2</commonConfig.proguard.version>
     </properties>
 
     <!-- see repositories in Super POM: https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Super_POM -->
@@ -342,6 +344,40 @@
                         </execution>
                     </executions>
                 </plugin>
+                <plugin>
+                    <groupId>com.github.wvengen</groupId>
+                    <artifactId>proguard-maven-plugin</artifactId>
+                    <version>2.2.0</version>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>proguard</goal>
+                            </goals>
+                            <configuration>
+                                <includeDependency>true</includeDependency>
+                                <attachArtifactClassifier>optimized</attachArtifactClassifier>
+                                <attach>true</attach>
+                                <proguardVersion>${commonConfig.proguard.version}</proguardVersion>
+                                <obfuscate>false</obfuscate>
+                                <options>
+                                    <option>-include ${project.basedir}/proguard-rules.pro</option>
+                                </options>
+                                <libs>
+                                    <lib>${java.home}/lib/rt.jar</lib>
+                                </libs>
+                            </configuration>
+                        </execution>
+                    </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>net.sf.proguard</groupId>
+                            <artifactId>proguard-base</artifactId>
+                            <version>${commonConfig.proguard.version}</version>
+                            <scope>runtime</scope>
+                        </dependency>
+                    </dependencies>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -406,6 +442,58 @@
      Use this either with your cmd line or in .mvn/maven.config. Example "-DcommonConfig.compiler.profile=jdk11".
      This sets the JDK and additionally configurations, eg. for errorprone for the compiler. -->
     <profiles>
+        <profile>
+            <id>JDK_9_PLUS_AUTO_CONFIG</id>
+            <activation>
+                <jdk>[9,)</jdk>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <!-- JDK 9+ does not have rt.jr, so lib must be one of the new modules, see https://stackoverflow.com/questions/53478628/does-proguard-support-java-11 -->
+                        <plugin>
+                            <groupId>com.github.wvengen</groupId>
+                            <artifactId>proguard-maven-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <configuration>
+                                        <libs>
+                                            <lib>${java.home}/jmods</lib>
+                                        </libs>
+                                    </configuration>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+        <profile>
+            <id>JDK_7_AND_8_PLUS_AUTO_CONFIG</id>
+            <activation>
+                <jdk>(,8]</jdk>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <!-- JDK 8- should use rt.jar -->
+                        <plugin>
+                            <groupId>com.github.wvengen</groupId>
+                            <artifactId>proguard-maven-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <configuration>
+                                        <libs>
+                                            <lib>${java.home}/lib/rt.jar</lib>
+                                        </libs>
+                                    </configuration>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
         <profile>
             <id>JDK_7</id>
             <activation>

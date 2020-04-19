@@ -5,6 +5,10 @@
 * new property `commonConfig.compile.errorprone.version`
 * add jdk7 compiler profile
 
+### Plugins
+
+* (new) proguard-maven-plugin: 2.2.0 (with Proguard 6.2.2) and jdk auto config
+
 ## 11
 
 * add more compiler profiles
