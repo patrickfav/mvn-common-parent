@@ -2,6 +2,8 @@
 
 ## 13
 
+* new property `commonConfig.proguard.configFile` defining locatino of proguard rules file
+
 ## 12
 
 * new property `commonConfig.compile.errorprone.version`

@@ -37,10 +37,10 @@
         <commonConfig.compile.errorprone.version>2.3.4</commonConfig.compile.errorprone.version>
 
         <commonConfig.deps.jackson-core.version>2.10.3</commonConfig.deps.jackson-core.version>
-        <commonConfig.deps.jackson-jaxrs.version>${commonConfig.deps.jackson-core.version}
-        </commonConfig.deps.jackson-jaxrs.version>
+        <commonConfig.deps.jackson-jaxrs.version>${commonConfig.deps.jackson-core.version}</commonConfig.deps.jackson-jaxrs.version>
 
         <commonConfig.proguard.version>6.2.2</commonConfig.proguard.version>
+        <commonConfig.proguard.configFile>${project.basedir}/proguard-rules.pro</commonConfig.proguard.configFile>
     </properties>
 
     <!-- see repositories in Super POM: https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Super_POM -->
@@ -361,7 +361,7 @@
                                 <proguardVersion>${commonConfig.proguard.version}</proguardVersion>
                                 <obfuscate>false</obfuscate>
                                 <options>
-                                    <option>-include ${project.basedir}/proguard-rules.pro</option>
+                                    <option>-include ${commonConfig.proguard.configFile}</option>
                                 </options>
                                 <libs>
                                     <lib>${java.home}/lib/rt.jar</lib>
