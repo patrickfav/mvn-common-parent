@@ -3,6 +3,7 @@
 ## 13
 
 * new property `commonConfig.proguard.configFile` defining locatino of proguard rules file
+* add jacoco minimum coverage ratio check, currently 60% for line, 70% for method and 80% for class
 
 ## 12
 

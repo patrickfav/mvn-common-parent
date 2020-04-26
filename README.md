@@ -100,6 +100,15 @@ You can check if the correct profile is set with
 mvnw help:active-profiles
 mvnw help:all-profiles
 ```
+### Jacoco Minimum Coverage Rules
+
+If the Jacoco plugin is used, some minimum coverage ratio checks are active. Change them with these properties:
+
+* `commonConfig.jacoco.check.linecov` (60% default)
+* `commonConfig.jacoco.check.methodcov` (70% default)
+* `commonConfig.jacoco.check.classcov` (80% default)
+
+You may disable the check by setting `commonConfig.jacoco.check.disable` to `true`.
 
 ### Reference to Project Root
 
