@@ -6,7 +6,7 @@
 
     <groupId>at.favre.lib</groupId>
     <artifactId>common-parent</artifactId>
-    <version>13</version>
+    <version>14</version>
     <packaging>pom</packaging>
 
     <name>Maven Common Configuration</name>
