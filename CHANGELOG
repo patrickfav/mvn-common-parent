@@ -5,7 +5,7 @@
 ## 15
 
 * update dependencies (bytes, jackson)
-* update plugins (proguard, owasp, versions, surefire, jacoco, checsum)
+* update plugins (proguard, owasp, versions, surefire, jacoco, checksum)
 
 ## 14
 
