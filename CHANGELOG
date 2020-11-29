@@ -1,9 +1,12 @@
 # Releases
+
 ## 14
+
+* bump junit from 4.13 to 4.13.1 due to minor CVE
 
 ## 13
 
-* new property `commonConfig.proguard.configFile` defining locatino of proguard rules file
+* new property `commonConfig.proguard.configFile` defining location of proguard rules file
 * add jacoco minimum coverage ratio check, currently 60% for line, 70% for method and 80% for class
 
 ## 12
