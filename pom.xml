@@ -36,7 +36,7 @@
         <commonConfig.compile.plugin.version>3.8.1</commonConfig.compile.plugin.version>
         <commonConfig.compile.errorprone.version>2.3.4</commonConfig.compile.errorprone.version>
 
-        <commonConfig.deps.jackson-core.version>2.10.3</commonConfig.deps.jackson-core.version>
+        <commonConfig.deps.jackson-core.version>2.12.0</commonConfig.deps.jackson-core.version>
         <commonConfig.deps.jackson-jaxrs.version>${commonConfig.deps.jackson-core.version}</commonConfig.deps.jackson-jaxrs.version>
 
         <commonConfig.proguard.version>6.2.2</commonConfig.proguard.version>
