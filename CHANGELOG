@@ -1,5 +1,12 @@
 # Releases
 
+## 16
+
+## 15
+
+* update dependencies (bytes, jackson)
+* update plugins (proguard, owasp, versions, surefire, jacoco, checsum)
+
 ## 14
 
 * bump junit from 4.13 to 4.13.1 due to minor CVE
