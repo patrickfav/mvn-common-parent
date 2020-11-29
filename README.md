@@ -2,7 +2,7 @@
 A maven configuration which is used as commons config parent for POM files for my maven open source projects. Defines a lot of defaults in `pluginManagement` and some in `dependencyManagement` and activates some plugins.
 
 [![Download](https://api.bintray.com/packages/patrickfav/maven/mvn-common-parent/images/download.svg)](https://bintray.com/patrickfav/maven/mvn-common-parent/_latestVersion)
-[![Build Status](https://travis-ci.org/patrickfav/mvn-common-parent.svg?branch=master)](https://travis-ci.org/patrickfav/mvn-common-parent)
+[![Build Status](https://travis-ci.com/patrickfav/mvn-common-parent.svg?branch=master)](https://travis-ci.com/patrickfav/mvn-common-parent)
 
 ## Features
 
