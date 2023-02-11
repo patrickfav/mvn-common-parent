@@ -116,9 +116,23 @@ If you need to use e.g. a file that lives within your project (e.g. the keystore
 use the correct base path. There are two useful variables to help you:
 
 * `${project.basedir}` is the path of your current module
-* `${session.executionRootDirectory}` is the root path of your projects (and all your modules) - can be used in sub-modules
+* `${session.executionRootDirectory}` is the root path of your projects (and all your modules) - can be used in
+  sub-modules
 
-## Built-In Plugins Explained 
+### Deploy
+
+To deploy use activate the profile `deploy` and then you can use the nexus-staging plugin which deploys to
+sonatype staging area which deploys to Maven Central:
+
+```bash
+./mvnw -B -X -Pdeploy nexus-staging:deploy 
+```
+
+This will also activate gpg sign which needs proper setup in `settings.xml`.
+
+See also https://github.com/sonatype/nexus-maven-plugins/tree/main/staging/maven-plugin
+
+## Built-In Plugins Explained
 
 ### Analyze
 
