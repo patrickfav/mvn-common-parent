@@ -1,8 +1,8 @@
 # Maven Common Configuration
 A maven configuration which is used as commons config parent for POM files for my maven open source projects. Defines a lot of defaults in `pluginManagement` and some in `dependencyManagement` and activates some plugins.
 
-[![Maven Central](https://img.shields.io/maven-central/v/at.favre.lib/mvn-common-parent)](https://mvnrepository.com/artifact/at.favre.lib/mvn-common-parent)
-[![Build Status](https://travis-ci.com/patrickfav/mvn-common-parent.svg?branch=master)](https://travis-ci.com/patrickfav/mvn-common-parent)
+[![Maven Central](https://img.shields.io/maven-central/v/at.favre.lib/common-parent)](https://mvnrepository.com/artifact/at.favre.lib/common-parent)
+[![Github Actions](https://github.com/patrickfav/mvn-common-parent/actions/workflows/build_deploy.yml/badge.svg)](https://github.com/patrickfav/mvn-common-parent/actions)
 
 ## Features
 
