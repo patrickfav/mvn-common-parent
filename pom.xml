@@ -6,7 +6,7 @@
 
     <groupId>at.favre.lib</groupId>
     <artifactId>common-parent</artifactId>
-    <version>16</version>
+    <version>16-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Maven Common Configuration</name>
@@ -785,9 +785,8 @@
     </licenses>
 
     <scm>
-        <connection>https://github.com/patrickfav/mvn-common-parent.git</connection>
-        <developerConnection>https://github.com/patrickfav/mvn-common-parent.git</developerConnection>
-        <tag>HEAD</tag>
+        <connection>scm:git:https://github.com/patrickfav/mvn-common-parent.git</connection>
+        <developerConnection>scm:git:https://github.com/patrickfav/mvn-common-parent.git</developerConnection>
         <url>https://github.com/patrickfav/mvn-common-parent</url>
     </scm>
 </project>
