@@ -23,8 +23,6 @@ jobs:
           cache: 'maven'
       - name: Build with Maven
         run: ./mvnw -U clean install -X
-      - name: Upload coverage reports to CodeCov
-        uses: codecov/codecov-action@v3
 
   deploy:
     needs: build
