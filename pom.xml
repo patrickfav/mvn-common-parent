@@ -441,8 +441,9 @@
                     <configuration>
                         <serverId>ossrh</serverId>
                         <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                        <skipLocalStaging>true</skipLocalStaging>
+                        <skipStagingRepositoryClose>true</skipStagingRepositoryClose>
                         <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                        <autoDropAfterRelease>true</autoDropAfterRelease>
                     </configuration>
                 </plugin>
                 <!-- GPG plugin -->
@@ -815,8 +816,12 @@
                 <repository>
                     <id>ossrh</id>
                     <name>Central Repository OSSRH</name>
-                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
                 </repository>
+                <snapshotRepository>
+                    <id>ossrh-snapshots</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
             </distributionManagement>
         </profile>
     </profiles>
