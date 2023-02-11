@@ -1,5 +1,9 @@
 # Releases
 
+## 17
+
+* add gpg signing
+
 ## 16
 
 * update many plugins and dependencies
