@@ -19,7 +19,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <commonConfig.checkstylePlugin.version>3.2.1</commonConfig.checkstylePlugin.version>
-        <commonConfig.checkstyle.version>8.31</commonConfig.checkstyle.version>
+        <commonConfig.checkstyle.version>8.45.1</commonConfig.checkstyle.version>
         <commonConfig.checkstyle.config.version>2</commonConfig.checkstyle.config.version>
 
         <commonConfig.jarSign.keystore>${project.basedir}/keystore.jks</commonConfig.jarSign.keystore>
@@ -36,7 +36,7 @@
         <commonConfig.compile.plugin.version>3.10.1</commonConfig.compile.plugin.version>
         <commonConfig.compile.errorprone.version>2.3.4</commonConfig.compile.errorprone.version>
 
-        <commonConfig.deps.jackson-core.version>2.12.7.1</commonConfig.deps.jackson-core.version>
+        <commonConfig.deps.jackson-core.version>2.14.2</commonConfig.deps.jackson-core.version>
         <commonConfig.deps.jackson-jaxrs.version>${commonConfig.deps.jackson-core.version}</commonConfig.deps.jackson-jaxrs.version>
 
         <commonConfig.proguard.version>6.2.2</commonConfig.proguard.version>
@@ -458,14 +458,14 @@
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>4.13.1</version>
+                <version>4.13.2</version>
                 <scope>test</scope>
             </dependency>
             <!-- common dependencies: bytes -->
             <dependency>
                 <groupId>at.favre.lib</groupId>
                 <artifactId>bytes</artifactId>
-                <version>1.4.0</version>
+                <version>1.5.0</version>
             </dependency>
             <!-- common dependencies: jackson-core -->
             <dependency>
