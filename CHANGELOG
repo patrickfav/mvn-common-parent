@@ -1,5 +1,9 @@
 # Releases
 
+## 18
+
+* first fully automated version to release directly to maven central
+
 ## 17
 
 * add gpg signing

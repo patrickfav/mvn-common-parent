@@ -122,12 +122,14 @@ use the correct base path. There are two useful variables to help you:
 ### Deploy
 
 To deploy use activate the profile `deploy` and then you can use the nexus-staging plugin which deploys to
-sonatype staging area which deploys to Maven Central:
+sonatype staging, closes the staging repo, then releases it to Maven Central:
 
 ```bash
-./mvnw -B -X -Pdeploy nexus-staging:deploy 
+./mvnw -B verify nexus-staging:deploy -P deploy && \
+./mvnw -B nexus-staging:release -P deploy
 ```
 
+The `verify` is necessary so that the correct lifecycle phase is called and gpg sign is activated.
 This will also activate gpg sign which needs proper setup in `settings.xml`.
 
 See also https://github.com/sonatype/nexus-maven-plugins/tree/main/staging/maven-plugin
