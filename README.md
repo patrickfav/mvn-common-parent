@@ -43,10 +43,10 @@ Don't forget to overwrite `<scm>...</scm>` config, otherwise it will be inherite
 
 ### Maven Wrapper (recommended)
 
-It is recommended to use [maven wrapper](https://github.com/takari/maven-wrapper) in a new project. Initialize with:
+It is recommended to use [maven wrapper](https://maven.apache.org/wrapper/) in a new project. Initialize with:
 
 ```bash
-mvn -N io.takari:maven:0.7.7:wrapper
+mvn wrapper:wrapper  
 ```
 
 then you can use `mvnw` instead of `mvn`. The advantage is that everybody (+ci) uses a pre-defined maven version. Even [IntelliJ has Maven wrapper support](https://plugins.jetbrains.com/plugin/10633-maven-wrapper-support).
@@ -125,13 +125,13 @@ use the correct base path. There are two useful variables to help you:
 Check the created `pom` with
 
 ```bash
-mvnw help:effective-pom
+./mvnw help:effective-pom
 ```
 
 You may check for updates of any plugins or dependencies with
 
 ```bash
-mvnw versions:display-dependency-updates
+./mvnw versions:display-dependency-updates
 ```
 
 ### Versions Plugin
@@ -139,15 +139,15 @@ mvnw versions:display-dependency-updates
 Check for possible dependency updates
 
 ```bash
-mvnw versions:display-dependency-updates
-mvnw versions:display-plugin-updates
-mvnw versions:display-property-updates
+./mvnw versions:display-dependency-updates
+./mvnw versions:display-plugin-updates
+./mvnw versions:display-property-updates
 ```
 
 Set version through command line (or ci script)
 
 ```bash
-mvnw versions:set -DnewVersion=1.2.3-SNAPSHOT
+./mvnw versions:set -DnewVersion=1.2.3-SNAPSHOT
 ```
 
 ## Related Projects

@@ -18,8 +18,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <commonConfig.checkstylePlugin.version>3.1.1</commonConfig.checkstylePlugin.version>
-        <commonConfig.checkstyle.version>8.31</commonConfig.checkstyle.version>
+        <commonConfig.checkstylePlugin.version>3.2.1</commonConfig.checkstylePlugin.version>
+        <commonConfig.checkstyle.version>8.45.1</commonConfig.checkstyle.version>
         <commonConfig.checkstyle.config.version>2</commonConfig.checkstyle.config.version>
 
         <commonConfig.jarSign.keystore>${project.basedir}/keystore.jks</commonConfig.jarSign.keystore>
@@ -33,10 +33,10 @@
 
         <commonConfig.enforcer.reqMavenVersion>[3.3.9,)</commonConfig.enforcer.reqMavenVersion>
 
-        <commonConfig.compile.plugin.version>3.8.1</commonConfig.compile.plugin.version>
+        <commonConfig.compile.plugin.version>3.10.1</commonConfig.compile.plugin.version>
         <commonConfig.compile.errorprone.version>2.3.4</commonConfig.compile.errorprone.version>
 
-        <commonConfig.deps.jackson-core.version>2.12.7.1</commonConfig.deps.jackson-core.version>
+        <commonConfig.deps.jackson-core.version>2.14.2</commonConfig.deps.jackson-core.version>
         <commonConfig.deps.jackson-jaxrs.version>${commonConfig.deps.jackson-core.version}</commonConfig.deps.jackson-jaxrs.version>
 
         <commonConfig.proguard.version>6.2.2</commonConfig.proguard.version>
@@ -56,9 +56,9 @@
     <!-- see repositories in Super POM: https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Super_POM -->
     <repositories>
         <repository>
-            <id>jcenter</id>
-            <name>jcenter</name>
-            <url>https://jcenter.bintray.com</url>
+            <id>central</id>
+            <name>Maven Central</name>
+            <url>https://repo1.maven.org/maven2</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -67,9 +67,9 @@
 
     <pluginRepositories>
         <pluginRepository>
-            <id>jcenter</id>
-            <name>jcenter</name>
-            <url>https://jcenter.bintray.com</url>
+            <id>central</id>
+            <name>Maven Central</name>
+            <url>https://repo1.maven.org/maven2</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -102,7 +102,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>3.3.0</version>
                 <inherited>false</inherited>
                 <configuration>
                     <classesDirectory>misc</classesDirectory>
@@ -150,35 +150,35 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>versions-maven-plugin</artifactId>
-                    <version>2.8.1</version>
+                    <version>2.14.2</version>
                 </plugin>
 
                 <!-- clean -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-clean-plugin</artifactId>
-                    <version>3.1.0</version>
+                    <version>3.2.0</version>
                 </plugin>
 
                 <!-- deploy -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <version>3.0.0-M1</version>
+                    <version>3.1.0</version>
                 </plugin>
 
                 <!-- install -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-install-plugin</artifactId>
-                    <version>3.0.0-M1</version>
+                    <version>3.1.0</version>
                 </plugin>
 
                 <!-- javadoc -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.2.0</version>
+                    <version>3.4.1</version>
                     <executions>
                         <execution>
                             <id>attach-javadocs</id>
@@ -193,7 +193,7 @@
                 <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>6.0.3</version>
+                    <version>8.0.2</version>
                     <configuration>
                         <failBuildOnAnyVulnerability>true</failBuildOnAnyVulnerability>
                     </configuration>
@@ -210,7 +210,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.0.0-M5</version>
+                    <version>3.0.0-M8</version>
                 </plugin>
 
                 <!-- checkstyle -->
@@ -270,7 +270,7 @@
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.6</version>
+                    <version>0.8.8</version>
                     <executions>
                         <execution>
                             <id>prepare-agent</id>
@@ -357,7 +357,7 @@
                 <plugin>
                     <groupId>net.nicoulaj.maven.plugins</groupId>
                     <artifactId>checksum-maven-plugin</artifactId>
-                    <version>1.9</version>
+                    <version>1.11</version>
                     <executions>
                         <execution>
                             <goals>
@@ -380,7 +380,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>3.0.0-M3</version>
+                    <version>3.2.1</version>
                     <executions>
                         <execution>
                             <id>enforce-maven</id>
@@ -400,7 +400,7 @@
                 <plugin>
                     <groupId>com.github.wvengen</groupId>
                     <artifactId>proguard-maven-plugin</artifactId>
-                    <version>2.3.1</version>
+                    <version>2.6.0</version>
                     <executions>
                         <execution>
                             <phase>package</phase>
@@ -458,14 +458,14 @@
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>4.13.1</version>
+                <version>4.13.2</version>
                 <scope>test</scope>
             </dependency>
             <!-- common dependencies: bytes -->
             <dependency>
                 <groupId>at.favre.lib</groupId>
                 <artifactId>bytes</artifactId>
-                <version>1.4.0</version>
+                <version>1.5.0</version>
             </dependency>
             <!-- common dependencies: jackson-core -->
             <dependency>
@@ -762,9 +762,9 @@
 
     <distributionManagement>
         <repository>
-            <id>bintray-patrickfav</id>
-            <name>patrickfav-mvn-common-parent</name>
-            <url>https://api.bintray.com/maven/patrickfav/maven/mvn-common-parent/;publish=1</url>
+            <id>ossrh</id>
+            <name>Central Repository OSSRH</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
 
@@ -772,7 +772,7 @@
         <developer>
             <id>patrickfav</id>
             <name>Patrick Favre-Bulle</name>
-            <email>patrick.favrebulle@gmail.com</email>
+            <email>patrick@favre.at</email>
         </developer>
     </developers>
 
