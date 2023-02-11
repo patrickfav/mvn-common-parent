@@ -815,12 +815,8 @@
                 <repository>
                     <id>ossrh</id>
                     <name>Central Repository OSSRH</name>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                </repository>
-                <snapshotRepository>
-                    <id>ossrh-snapshots</id>
                     <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-                </snapshotRepository>
+                </repository>
             </distributionManagement>
         </profile>
     </profiles>
