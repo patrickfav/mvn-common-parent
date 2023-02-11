@@ -442,7 +442,6 @@
                         <serverId>ossrh</serverId>
                         <nexusUrl>https://oss.sonatype.org/</nexusUrl>
                         <skipLocalStaging>true</skipLocalStaging>
-                        <skipStagingRepositoryClose>true</skipStagingRepositoryClose>
                         <autoReleaseAfterClose>true</autoReleaseAfterClose>
                     </configuration>
                 </plugin>
