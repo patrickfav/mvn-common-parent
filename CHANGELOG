@@ -2,6 +2,9 @@
 
 ## 16
 
+* update many plugins and dependencies
+* migrate to github actions
+
 ## 15
 
 * update dependencies (bytes, jackson)
