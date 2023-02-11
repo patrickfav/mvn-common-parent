@@ -6,7 +6,7 @@
 
     <groupId>at.favre.lib</groupId>
     <artifactId>common-parent</artifactId>
-    <version>17</version>
+    <version>17.0.1</version>
     <packaging>pom</packaging>
 
     <name>Maven Common Configuration</name>
@@ -37,7 +37,8 @@
         <commonConfig.compile.errorprone.version>2.3.4</commonConfig.compile.errorprone.version>
 
         <commonConfig.deps.jackson-core.version>2.14.2</commonConfig.deps.jackson-core.version>
-        <commonConfig.deps.jackson-jaxrs.version>${commonConfig.deps.jackson-core.version}</commonConfig.deps.jackson-jaxrs.version>
+        <commonConfig.deps.jackson-jaxrs.version>${commonConfig.deps.jackson-core.version}
+        </commonConfig.deps.jackson-jaxrs.version>
 
         <commonConfig.proguard.version>6.2.2</commonConfig.proguard.version>
         <commonConfig.proguard.configFile>${project.basedir}/proguard-rules.pro</commonConfig.proguard.configFile>
@@ -431,6 +432,41 @@
                         </dependency>
                     </dependencies>
                 </plugin>
+                <!-- Nexus Staging Plugin for deploying to maven central-->
+                <plugin>
+                    <groupId>org.sonatype.plugins</groupId>
+                    <artifactId>nexus-staging-maven-plugin</artifactId>
+                    <version>1.6.13</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <serverId>ossrh</serverId>
+                        <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                        <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        <autoDropAfterRelease>true</autoDropAfterRelease>
+                    </configuration>
+                </plugin>
+                <!-- GPG plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>3.0.1</version>
+                    <executions>
+                        <execution>
+                            <id>sign-artifacts</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>sign</goal>
+                            </goals>
+                            <configuration>
+                                <!-- Prevent `gpg` from using pinentry programs -->
+                                <gpgArguments>
+                                    <arg>--pinentry-mode</arg>
+                                    <arg>loopback</arg>
+                                </gpgArguments>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -758,15 +794,36 @@
                 </pluginManagement>
             </build>
         </profile>
-    </profiles>
 
-    <distributionManagement>
-        <repository>
-            <id>ossrh</id>
-            <name>Central Repository OSSRH</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
+        <!-- Deployment profile (required so these plugins are only used when deploying) -->
+        <profile>
+            <id>deploy</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <distributionManagement>
+                <repository>
+                    <id>ossrh</id>
+                    <name>Central Repository OSSRH</name>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+                <snapshotRepository>
+                    <id>ossrh-snapshots</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+    </profiles>
 
     <developers>
         <developer>
