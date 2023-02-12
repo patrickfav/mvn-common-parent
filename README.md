@@ -131,6 +131,7 @@ sonatype staging, closes the staging repo, then releases it to Maven Central:
 
 The `verify` is necessary so that the correct lifecycle phase is called and gpg sign is activated.
 This will also activate gpg sign which needs proper setup in `settings.xml`.
+As side effect, this will also set property `commonConfig.deployMode.active` if you want to activate other profiles in accordance for example.
 
 See also https://github.com/sonatype/nexus-maven-plugins/tree/main/staging/maven-plugin
 
