@@ -197,6 +197,8 @@
                     <version>8.0.2</version>
                     <configuration>
                         <failBuildOnAnyVulnerability>true</failBuildOnAnyVulnerability>
+                        <cveValidForHours>24</cveValidForHours>
+                        <failBuildOnCVSS>4</failBuildOnCVSS>
                     </configuration>
                     <executions>
                         <execution>
