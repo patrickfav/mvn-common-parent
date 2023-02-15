@@ -175,11 +175,18 @@
                     <version>3.1.0</version>
                 </plugin>
 
+                <!-- site -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>4.0.0-M5</version>
+                </plugin>
+
                 <!-- javadoc -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.4.1</version>
+                    <version>3.5.0</version>
                     <executions>
                         <execution>
                             <id>attach-javadocs</id>
@@ -194,7 +201,7 @@
                 <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>8.0.2</version>
+                    <version>8.1.0</version>
                     <configuration>
                         <failBuildOnAnyVulnerability>true</failBuildOnAnyVulnerability>
                         <cveValidForHours>24</cveValidForHours>
@@ -213,7 +220,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.0.0-M8</version>
+                    <version>3.0.0-M9</version>
                 </plugin>
 
                 <!-- checkstyle -->
@@ -529,7 +536,7 @@
 
     <!-- COMPILER PROFILES
      Use this either with your cmd line or in .mvn/maven.config. Example "-DcommonConfig.compiler.profile=jdk11".
-     This sets the JDK and additionally configurations, eg. for errorprone for the compiler. -->
+     This sets the JDK and additionally configurations, e.g. for errorprone for the compiler. -->
     <profiles>
         <profile>
             <id>JDK_9_PLUS_AUTO_CONFIG</id>

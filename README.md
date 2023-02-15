@@ -112,12 +112,12 @@ You may disable the check by setting `commonConfig.jacoco.check.disable` to `tru
 
 ### Reference to Project Root
 
-If you need to use e.g. a file that lives within your project (e.g. the keystore file for jar-siging) make sure you
+If you need to use e.g. a file that lives within your project (e.g. the keystore file for jar-signing) make sure you
 use the correct base path. There are two useful variables to help you:
 
 * `${project.basedir}` is the path of your current module
 * `${session.executionRootDirectory}` is the root path of your projects (and all your modules) - can be used in
-  sub-modules
+  submodules
 
 ### Deploy
 
@@ -151,7 +151,7 @@ You may check for updates of any plugins or dependencies with
 ./mvnw versions:display-dependency-updates
 ```
 
-### Versions Plugin
+### Versions-Plugin
 
 Check for possible dependency updates
 
