@@ -1,4 +1,9 @@
 # Releases
+
+## 19
+
+* increase duration CVEs are valid and ignore everything below CVSS 3.9
+
 ## 18.1
 
 * add property on deploy profile
