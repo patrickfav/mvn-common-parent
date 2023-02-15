@@ -3,6 +3,10 @@
 ## 19
 
 * increase duration CVEs are valid and ignore everything below CVSS 3.9
+* add jdk17 & jdk17 with errorprone profile
+* add site maven plugin version
+* update dependency check, surefire, javadoc plugin
+* update errorprone to latest 2.18 and to latest 2.10 for java 8
 
 ## 18.1
 

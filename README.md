@@ -92,7 +92,9 @@ Currently possible values:
 * `jdk8_w_errorprone`
 * `jdk11`
 * `jdk11_w_errorprone`
-* `jdk14`
+* `jdk17`
+* `jdk17_w_errorprone`
+
 
 You can check if the correct profile is set with
 

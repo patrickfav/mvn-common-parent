@@ -34,7 +34,7 @@
         <commonConfig.enforcer.reqMavenVersion>[3.3.9,)</commonConfig.enforcer.reqMavenVersion>
 
         <commonConfig.compile.plugin.version>3.10.1</commonConfig.compile.plugin.version>
-        <commonConfig.compile.errorprone.version>2.3.4</commonConfig.compile.errorprone.version>
+        <commonConfig.compile.errorprone.version>2.18.0</commonConfig.compile.errorprone.version>
 
         <commonConfig.deps.jackson-core.version>2.14.2</commonConfig.deps.jackson-core.version>
         <commonConfig.deps.jackson-jaxrs.version>${commonConfig.deps.jackson-core.version}
@@ -712,8 +712,8 @@
                                 <dependency>
                                     <groupId>com.google.errorprone</groupId>
                                     <artifactId>error_prone_core</artifactId>
-                                    <!-- only one compatible with java 7-->
-                                    <version>${commonConfig.compile.errorprone.version}</version>
+                                    <!-- only one compatible with java 8 -->
+                                    <version>2.10.0</version>
                                 </dependency>
                             </dependencies>
                         </plugin>
@@ -779,11 +779,11 @@
             </build>
         </profile>
         <profile>
-            <id>JDK_14</id>
+            <id>JDK_17_ERRORPRONE</id>
             <activation>
                 <property>
                     <name>commonConfig.compiler.profile</name>
-                    <value>jdk14</value>
+                    <value>jdk17_w_errorprone</value>
                 </property>
             </activation>
             <build>
@@ -794,7 +794,41 @@
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-compiler-plugin</artifactId>
                             <configuration>
-                                <release>14</release>
+                                <release>17</release>
+                                <compilerArgs>
+                                    <arg>-XDcompilePolicy=simple</arg>
+                                    <arg>-Xplugin:ErrorProne</arg>
+                                </compilerArgs>
+                                <annotationProcessorPaths>
+                                    <path>
+                                        <groupId>com.google.errorprone</groupId>
+                                        <artifactId>error_prone_core</artifactId>
+                                        <version>${commonConfig.compile.errorprone.version}</version>
+                                    </path>
+                                </annotationProcessorPaths>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+        <profile>
+            <id>JDK_17</id>
+            <activation>
+                <property>
+                    <name>commonConfig.compiler.profile</name>
+                    <value>jdk17</value>
+                </property>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <!-- error prone support -->
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                            <configuration>
+                                <release>17</release>
                             </configuration>
                         </plugin>
                     </plugins>
