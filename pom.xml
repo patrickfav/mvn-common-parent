@@ -11,7 +11,7 @@
 
     <name>Maven Common Configuration</name>
     <description>Common configurations (plugins, version, etc.) used as parent for maven projects.</description>
-    <url>https://github.com/patrickfav/mvn-common-parent</url>
+    <url>https://favr.dev/opensource/mvn-common-parent</url>
     <inceptionYear>2019</inceptionYear>
 
     <properties>
